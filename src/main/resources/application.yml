@@ -20,7 +20,7 @@ spring:
       uri: http://localhost:8888
       request-connection-timeout: 5000
       request-read-timeout: 5000
-      fail-fast: true
+      fail-fast: false # set to true for prod
       retry:
         max-attempts: 6
         initial-interval: 1000
