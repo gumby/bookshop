@@ -31,8 +31,8 @@ public class BookRepositoryJdbcTests {
 
     @Test
     void findAllBooks() {
-        var book1 = Book.of("1234561235", "Title", "Author", 12.90);
-        var book2 = Book.of("1234561236", "Another title", "Author", 13.90);
+        var book1 = Book.of("1234561235", "Title", "Author", 12.90, "Polarsophia");
+        var book2 = Book.of("1234561236", "Another title", "Author", 13.90, "Polarsophia");
         jdbcAggTemplate.insert(book1);
         jdbcAggTemplate.insert(book2);
 
@@ -46,7 +46,7 @@ public class BookRepositoryJdbcTests {
     @Test
     void findBookByIsbnWhenExisting() {
         var bookIsbn = "1234561237";
-        var book = Book.of(bookIsbn, "Title", "Author", 12.90);
+        var book = Book.of(bookIsbn, "Title", "Author", 12.90, "Polarsophia");
         jdbcAggTemplate.insert(book);
         Optional<Book> actualBook = bookRepo.findByIsbn(bookIsbn);
 
@@ -63,7 +63,7 @@ public class BookRepositoryJdbcTests {
     @Test
     void deleteByIsbn() {
         var bookIsbn = "1234561241";
-        var bookToCreate = Book.of(bookIsbn, "Title", "Author", 12.90);
+        var bookToCreate = Book.of(bookIsbn, "Title", "Author", 12.90, "Polarsophia");
         var persistedBook = jdbcAggTemplate.insert(bookToCreate);
 
         bookRepo.deleteByIsbn(bookIsbn);
