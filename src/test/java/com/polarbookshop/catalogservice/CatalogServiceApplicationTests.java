@@ -108,7 +108,7 @@ class CatalogServiceApplicationTests {
                 .uri("/books/" + bookIsbn)
                 .exchange()
                 .expectStatus().isNotFound()
-                .expectBody(String.class).value(err -> assertThat(err).isEqualTo("the book with ISBN" + bookIsbn + " was not found"));
+                .expectBody(String.class).value(err -> assertThat(err).isEqualTo("the book with ISBN " + bookIsbn + " was not found"));
     }
 
     @Test
