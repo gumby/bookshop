@@ -40,6 +40,7 @@ jobs:
           ./gradlew build
   package:
     name: Package and Publish
+    if: ${{ github.ref == 'refs/heads/develop' }}
     needs: [ build ]
     runs-on: ubuntu-22.04
     permissions:
@@ -58,7 +59,7 @@ jobs:
       - name: Build container image
         run: |
           chmod +x gradlew
-          ./gradlew bootBuildImage --imageName ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERISON }}
+          ./gradlew bootBuildImage --imageName ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}:${{ env.VERSION }}
       - name: OCI image vuln scan
         uses: anchore/scan-action@v3
         id: scan
