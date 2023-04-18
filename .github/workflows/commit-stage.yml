@@ -40,7 +40,6 @@ jobs:
           ./gradlew build
   package:
     name: Package and Publish
-    if: ${{ github.ref == 'refs/head/develop' }}
     needs: [ build ]
     runs-on: ubuntu-22.04
     permissions:
